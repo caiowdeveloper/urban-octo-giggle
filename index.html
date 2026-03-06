@@ -6,23 +6,23 @@
     <title>Limobi | Acesso</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-1: #f8f1e6;
-            --bg-2: #e5efea;
-            --panel: rgba(255, 255, 255, 0.82);
-            --panel-strong: #ffffff;
-            --border: rgba(92, 131, 123, 0.14);
-            --text: #21312f;
-            --muted: #667873;
-            --accent: #2f5d56;
-            --accent-soft: #5e8f86;
-            --success-bg: #eef7f1;
-            --success-text: #2b6a4a;
-            --error-bg: #fff1eb;
-            --error-text: #934535;
-            --shadow: 0 24px 60px rgba(33, 49, 47, 0.12);
+            --bg: #f4efe7;
+            --paper: rgba(255, 251, 245, 0.78);
+            --paper-strong: #fffaf3;
+            --line: rgba(46, 61, 52, 0.12);
+            --text: #19231d;
+            --muted: #667169;
+            --accent: #1f6b52;
+            --accent-strong: #134b39;
+            --accent-soft: #deeadf;
+            --danger: #a54c3f;
+            --danger-bg: #fbe8e3;
+            --success: #216448;
+            --success-bg: #e7f4eb;
+            --shadow: 0 28px 80px rgba(25, 35, 29, 0.14);
         }
 
         * {
@@ -36,146 +36,229 @@
         }
 
         body {
-            font-family: "Plus Jakarta Sans", sans-serif;
+            font-family: "Sora", sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 24%),
-                linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+                radial-gradient(circle at 15% 20%, rgba(215, 232, 220, 0.95) 0, transparent 28%),
+                radial-gradient(circle at 82% 16%, rgba(255, 222, 198, 0.72) 0, transparent 24%),
+                linear-gradient(140deg, #f8f4ed 0%, #efe8dd 52%, #e7efe7 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(25, 35, 29, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(25, 35, 29, 0.03) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 92%);
+            pointer-events: none;
         }
 
         .page {
+            position: relative;
             min-height: 100vh;
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 28px;
+            display: grid;
+            place-items: center;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(14px);
+            opacity: 0.88;
+            pointer-events: none;
+        }
+
+        .orb-a {
+            width: 220px;
+            height: 220px;
+            top: 72px;
+            left: 5%;
+            background: rgba(214, 232, 211, 0.86);
+        }
+
+        .orb-b {
+            width: 160px;
+            height: 160px;
+            right: 7%;
+            bottom: 76px;
+            background: rgba(255, 211, 173, 0.7);
         }
 
         .shell {
-            width: 100%;
-            max-width: 1120px;
+            position: relative;
+            width: min(1080px, 100%);
             display: grid;
-            grid-template-columns: 0.92fr 1.08fr;
-            gap: 24px;
+            grid-template-columns: minmax(280px, 0.86fr) minmax(360px, 1fr);
+            gap: 22px;
+            z-index: 1;
         }
 
-        .intro,
-        .card {
-            background: var(--panel);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 28px;
+        .hero,
+        .auth {
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 32px;
+            background: var(--paper);
+            backdrop-filter: blur(16px);
             box-shadow: var(--shadow);
-            backdrop-filter: blur(12px);
         }
 
-        .intro {
-            padding: 34px;
+        .hero {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 620px;
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.45)),
-                linear-gradient(135deg, rgba(248, 241, 230, 0.94), rgba(229, 239, 234, 0.92));
+                linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.2)),
+                linear-gradient(160deg, rgba(255, 251, 245, 0.94), rgba(233, 242, 235, 0.92));
         }
 
-        .brand {
+        .brand-mark {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--accent) 0%, #3d9977 100%);
+            color: #f9f6f0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            box-shadow: 0 18px 32px rgba(31, 107, 82, 0.22);
+        }
+
+        .brand-block {
+            display: grid;
+            gap: 18px;
+        }
+
+        .brand-name {
             margin: 0;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.5rem, 5vw, 3.6rem);
-            line-height: 0.9;
-            color: var(--accent);
+            font-family: "Instrument Serif", serif;
+            font-size: clamp(3.5rem, 9vw, 5.6rem);
+            line-height: 0.88;
+            letter-spacing: -0.04em;
         }
 
-        .intro h2 {
-            margin: 22px 0 0;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.4rem, 4vw, 4rem);
-            line-height: 0.94;
+        .brand-copy {
+            margin: 0;
+            max-width: 18ch;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            padding: 12px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.7);
             color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .intro p {
-            margin: 16px 0 0;
-            max-width: 34ch;
-            color: var(--muted);
-            line-height: 1.75;
+        .hero-footer {
+            display: grid;
+            gap: 10px;
+            padding-top: 24px;
         }
 
-        .endpoint-box {
-            margin-top: 28px;
-            padding: 18px 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid var(--border);
-        }
-
-        .endpoint-box strong {
-            display: block;
-            margin-bottom: 10px;
+        .hero-kicker {
             color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
         }
 
-        .endpoint-box ul {
+        .hero-minimal {
             margin: 0;
-            padding-left: 18px;
+            max-width: 22ch;
+            font-family: "Instrument Serif", serif;
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            line-height: 0.98;
         }
 
-        .endpoint-box li {
-            color: var(--muted);
-            font-size: 0.92rem;
-            line-height: 1.75;
+        .auth {
+            padding: 32px;
         }
 
-        .endpoint-box li + li {
-            margin-top: 10px;
+        .auth-head {
+            display: grid;
+            gap: 8px;
         }
 
-        .card {
-            padding: 30px;
-        }
-
-        .card h1 {
-            margin: 0;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2.2rem, 4vw, 3rem);
-            line-height: 0.96;
+        .eyebrow {
             color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
 
-        .card p {
-            margin: 10px 0 0;
+        .auth-head h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+        }
+
+        .auth-head p {
+            margin: 0;
             color: var(--muted);
             line-height: 1.7;
         }
 
         .tabs {
-            display: inline-flex;
-            gap: 8px;
-            margin-top: 22px;
-            padding: 6px;
-            border-radius: 999px;
-            background: rgba(241, 232, 220, 0.95);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 24px;
         }
 
         .tab {
-            border: 0;
-            border-radius: 999px;
-            padding: 12px 16px;
-            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 22px;
+            padding: 14px 12px;
+            background: rgba(255, 255, 255, 0.55);
             color: var(--muted);
             font: inherit;
+            font-size: 0.9rem;
             font-weight: 700;
             cursor: pointer;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+        }
+
+        .tab:hover {
+            transform: translateY(-1px);
         }
 
         .tab.active {
-            background: var(--panel-strong);
-            color: var(--accent);
-            box-shadow: 0 10px 24px rgba(33, 49, 47, 0.08);
+            background: var(--paper-strong);
+            border-color: rgba(31, 107, 82, 0.15);
+            color: var(--text);
+            box-shadow: 0 14px 32px rgba(25, 35, 29, 0.08);
         }
 
         .feedback {
             display: none;
-            margin-top: 22px;
-            padding: 16px 18px;
+            margin-top: 18px;
+            padding: 15px 16px;
             border-radius: 18px;
+            font-size: 0.94rem;
             line-height: 1.6;
         }
 
@@ -185,91 +268,115 @@
 
         .feedback.success {
             background: var(--success-bg);
-            color: var(--success-text);
+            color: var(--success);
         }
 
         .feedback.error {
-            background: var(--error-bg);
-            color: var(--error-text);
+            background: var(--danger-bg);
+            color: var(--danger);
         }
 
         .panel {
             display: none;
             margin-top: 22px;
+            padding: 24px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.72);
         }
 
         .panel.active {
             display: block;
         }
 
+        .form-copy {
+            margin: 0 0 18px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
         form {
             display: grid;
-            gap: 16px;
+            gap: 14px;
         }
 
         .field-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
         }
 
         .field {
             display: grid;
-            gap: 8px;
+            gap: 7px;
         }
 
         label {
-            color: var(--text);
-            font-size: 0.92rem;
-            font-weight: 600;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
         input {
             width: 100%;
             padding: 15px 16px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background: #fffdf9;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255, 251, 245, 0.92);
             color: var(--text);
             font: inherit;
         }
 
+        input::placeholder {
+            color: #8f9891;
+        }
+
         input:focus {
             outline: none;
-            border-color: rgba(47, 93, 86, 0.5);
-            box-shadow: 0 0 0 4px rgba(94, 143, 134, 0.12);
+            border-color: rgba(31, 107, 82, 0.42);
+            box-shadow: 0 0 0 4px rgba(31, 107, 82, 0.1);
         }
 
-        .helper-link {
-            color: var(--accent-soft);
-            text-decoration: none;
-            font-weight: 600;
+        .helper {
             width: fit-content;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
         }
 
-        .helper-link:hover {
+        .helper:hover {
             text-decoration: underline;
         }
 
         .submit {
+            margin-top: 4px;
             border: 0;
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 16px 20px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
-            color: #fff;
+            background: linear-gradient(135deg, var(--accent-strong) 0%, var(--accent) 46%, #3a8f70 100%);
+            color: #fff9f2;
             font: inherit;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 18px 30px rgba(47, 93, 86, 0.24);
+            box-shadow: 0 18px 32px rgba(31, 107, 82, 0.24);
+            transition: transform 180ms ease, box-shadow 180ms ease;
         }
 
         .submit:hover {
             transform: translateY(-1px);
+            box-shadow: 0 20px 36px rgba(31, 107, 82, 0.28);
         }
 
         @media (max-width: 980px) {
             .shell {
                 grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: auto;
+                gap: 48px;
             }
         }
 
@@ -278,61 +385,64 @@
                 padding: 16px;
             }
 
-            .intro,
-            .card {
+            .hero,
+            .auth {
                 padding: 22px;
+                border-radius: 26px;
             }
 
-            .tabs {
-                display: grid;
-                width: 100%;
-                border-radius: 20px;
-            }
-
+            .tabs,
             .field-row {
                 grid-template-columns: 1fr;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .brand-name {
+                font-size: 3.3rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="page">
-        <div class="shell">
-            <section class="intro">
-                <h1 class="brand">Limobi</h1>
-                <h2>Entrar, criar conta e recuperar acesso.</h2>
-                <p>
-                    O Limobi foi pensado para simplificar o acesso ao sistema e deixar a operacao mais
-                    leve, clara e pronta para crescer com o seu negocio.
-                </p>
+    <main class="page">
+        <div class="orb orb-a" aria-hidden="true"></div>
+        <div class="orb orb-b" aria-hidden="true"></div>
 
-                <div class="endpoint-box">
-                    <strong>3 vantagens de usar o Limobi</strong>
-                    <ul>
-                        <li>Centraliza login, criacao de conta e recuperacao de acesso em uma experiencia simples para a equipe e para o cliente.</li>
-                        <li>Reduz atrito no atendimento com uma interface mais clara, rapida de entender e facil de operar no dia a dia.</li>
-                        <li>Ja nasce pronta para crescer, conectando novos endpoints e integracoes sem precisar redesenhar toda a tela.</li>
-                    </ul>
+        <div class="shell">
+            <section class="hero" aria-label="Apresentacao da Limobi">
+                <div class="brand-block">
+                    <div class="brand-mark" aria-hidden="true">LM</div>
+                    <h1 class="brand-name">Limobi</h1>
+                    <p class="brand-copy">SaaS com acesso simples, moderno e direto ao ponto.</p>
                 </div>
+
             </section>
 
-            <section class="card">
-                <h1 id="title">Acessar o sistema</h1>
-                <p id="description">Entre com seu usuario ou e-mail.</p>
+            <section class="auth">
+                <header class="auth-head">
+                    <span class="eyebrow">Conta Limobi</span>
+                    <h1 id="title">Entrar</h1>
+                    <p id="description">Acesse sua conta com e-mail ou usuario.</p>
+                </header>
 
-                <div class="tabs" role="tablist" aria-label="Fluxos da autenticacao">
-                    <button class="tab active" type="button" data-mode="login" aria-selected="true">Acessar o sistema</button>
-                    <button class="tab" type="button" data-mode="register" aria-selected="false">Criar usuario</button>
-                    <button class="tab" type="button" data-mode="forgot" aria-selected="false">Esqueci a senha</button>
+                <div class="tabs" role="tablist" aria-label="Fluxos de acesso">
+                    <button class="tab active" type="button" data-mode="login" aria-selected="true">Login</button>
+                    <button class="tab" type="button" data-mode="register" aria-selected="false">Cadastro</button>
+                    <button class="tab" type="button" data-mode="forgot" aria-selected="false">Recuperar</button>
                 </div>
 
                 <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
 
                 <section class="panel active" data-panel="login">
+                    <p class="form-copy">Entre para continuar no Limobi.</p>
+
                     <form data-form="login">
                         <div class="field">
-                            <label for="login-identificador">Usuario ou e-mail</label>
-                            <input id="login-identificador" name="login" type="text" placeholder="usuario ou email@dominio.com" required>
+                            <label for="login-identificador">E-mail ou usuario</label>
+                            <input id="login-identificador" name="login" type="text" placeholder="voce@limobi.com" required>
                         </div>
 
                         <div class="field">
@@ -340,28 +450,30 @@
                             <input id="login-senha" name="senha" type="password" placeholder="Digite sua senha" required>
                         </div>
 
-                        <a class="helper-link" href="#" data-switch="forgot">Esqueci a senha</a>
+                        <a class="helper" href="#" data-switch="forgot">Esqueci minha senha</a>
 
                         <button class="submit" type="submit">Entrar</button>
                     </form>
                 </section>
 
                 <section class="panel" data-panel="register">
+                    <p class="form-copy">Crie sua conta com os dados essenciais.</p>
+
                     <form data-form="register">
                         <div class="field">
-                            <label for="cadastro-nome">Nome completo</label>
-                            <input id="cadastro-nome" name="nome" type="text" placeholder="Nome completo" required>
+                            <label for="cadastro-nome">Nome</label>
+                            <input id="cadastro-nome" name="nome" type="text" placeholder="Seu nome completo" required>
                         </div>
 
                         <div class="field-row">
                             <div class="field">
                                 <label for="cadastro-email">E-mail</label>
-                                <input id="cadastro-email" name="email" type="email" placeholder="email@dominio.com" required>
+                                <input id="cadastro-email" name="email" type="email" placeholder="voce@empresa.com" required>
                             </div>
 
                             <div class="field">
                                 <label for="cadastro-telefone">Telefone</label>
-                                <input id="cadastro-telefone" name="telefone" type="text" placeholder="(00) 00000-0000" required>
+                                <input id="cadastro-telefone" name="telefone" type="text" placeholder="(11) 99999-9999" required>
                             </div>
                         </div>
 
@@ -373,41 +485,43 @@
 
                             <div class="field">
                                 <label for="cadastro-confirmar">Confirmar senha</label>
-                                <input id="cadastro-confirmar" name="confirmarSenha" type="password" placeholder="Repita a senha" required>
+                                <input id="cadastro-confirmar" name="confirmarSenha" type="password" placeholder="Repita sua senha" required>
                             </div>
                         </div>
 
-                        <button class="submit" type="submit">Criar usuario</button>
+                        <button class="submit" type="submit">Criar conta</button>
                     </form>
                 </section>
 
                 <section class="panel" data-panel="forgot">
+                    <p class="form-copy">Informe seu e-mail ou usuario para recuperar a conta.</p>
+
                     <form data-form="forgot">
                         <div class="field">
-                            <label for="forgot-identificador">Usuario ou e-mail</label>
-                            <input id="forgot-identificador" name="login" type="text" placeholder="usuario ou email@dominio.com" required>
+                            <label for="forgot-identificador">E-mail ou usuario</label>
+                            <input id="forgot-identificador" name="login" type="text" placeholder="voce@limobi.com" required>
                         </div>
 
-                        <button class="submit" type="submit">Solicitar recuperacao</button>
+                        <button class="submit" type="submit">Recuperar acesso</button>
                     </form>
                 </section>
             </section>
         </div>
-    </div>
+    </main>
 
     <script>
         const textByMode = {
             login: {
-                title: "Acessar o sistema",
-                description: "Entre com seu usuario ou e-mail."
+                title: "Entrar",
+                description: "Acesse sua conta com e-mail ou usuario."
             },
             register: {
-                title: "Criar usuario",
-                description: "Cadastre um novo usuario com os dados principais."
+                title: "Cadastro",
+                description: "Crie uma nova conta Limobi."
             },
             forgot: {
-                title: "Esqueci a senha",
-                description: "Recupere o acesso informando usuario ou e-mail."
+                title: "Recuperar conta",
+                description: "Receba as instrucoes para voltar ao sistema."
             }
         };
 
@@ -478,7 +592,17 @@
                     return;
                 }
 
-                showFeedback("success", "Tela pronta. Conecte o endpoint de " + mode + " quando a API estiver disponivel.");
+                if (mode === "login") {
+                    showFeedback("success", "Tela pronta para conectar o endpoint de login.");
+                    return;
+                }
+
+                if (mode === "register") {
+                    showFeedback("success", "Tela pronta para conectar o endpoint de cadastro.");
+                    return;
+                }
+
+                showFeedback("success", "Tela pronta para conectar o endpoint de recuperacao.");
             });
         });
     </script>
