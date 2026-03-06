@@ -112,12 +112,19 @@
             color: var(--accent);
         }
 
-        .endpoint-box code {
-            display: block;
+        .endpoint-box ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .endpoint-box li {
             color: var(--muted);
-            font-size: 0.88rem;
-            line-height: 1.8;
-            white-space: pre-wrap;
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+
+        .endpoint-box li + li {
+            margin-top: 10px;
         }
 
         .card {
@@ -295,17 +302,17 @@
                 <h1 class="brand">Limobi</h1>
                 <h2>Entrar, criar conta e recuperar acesso.</h2>
                 <p>
-                    Tela HTML organizada para os tres fluxos principais da autenticacao, sem backend acoplado e
-                    pronta para ligar endpoints depois.
+                    O Limobi foi pensado para simplificar o acesso ao sistema e deixar a operacao mais
+                    leve, clara e pronta para crescer com o seu negocio.
                 </p>
 
                 <div class="endpoint-box">
-                    <strong>Endpoints futuros</strong>
-                    <code>window.LIMOBI_API_ENDPOINTS = {
-  login: "https://seu-servidor.com/login",
-  register: "https://seu-servidor.com/register",
-  forgot: "https://seu-servidor.com/forgot-password"
-}</code>
+                    <strong>3 vantagens de usar o Limobi</strong>
+                    <ul>
+                        <li>Centraliza login, criacao de conta e recuperacao de acesso em uma experiencia simples para a equipe e para o cliente.</li>
+                        <li>Reduz atrito no atendimento com uma interface mais clara, rapida de entender e facil de operar no dia a dia.</li>
+                        <li>Ja nasce pronta para crescer, conectando novos endpoints e integracoes sem precisar redesenhar toda a tela.</li>
+                    </ul>
                 </div>
             </section>
 
