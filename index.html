@@ -1,10 +1,818 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Meu Primeiro Projeto local 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limobi | Acesso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #f6eedf;
+            --cream: #fffaf3;
+            --linen: #f1e6d5;
+            --mist: #dceae5;
+            --sea: #8cb5ae;
+            --lagoon: #5d8d86;
+            --pine: #23423d;
+            --pine-soft: #466961;
+            --gold: #deb97f;
+            --ink: #21322f;
+            --muted: #667a75;
+            --white: #ffffff;
+            --shadow: 0 28px 60px rgba(35, 66, 61, 0.15);
+            --shadow-soft: 0 16px 38px rgba(35, 66, 61, 0.10);
+            --radius-xl: 30px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 28%),
+                radial-gradient(circle at 85% 15%, rgba(222, 185, 127, 0.22), transparent 18%),
+                linear-gradient(135deg, #f8f0e3 0%, #eef5f2 45%, #ddeadf 100%);
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            padding: 28px;
+        }
+
+        .brand-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .brand {
+            color: var(--pine);
+            text-decoration: none;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-note {
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(70, 105, 97, 0.12);
+            color: var(--pine-soft);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        .auth-layout {
+            display: grid;
+            grid-template-columns: 1.14fr 0.96fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .hero-panel,
+        .auth-panel {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(14px);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-panel {
+            padding: 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 720px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.42)),
+                linear-gradient(135deg, rgba(246, 238, 223, 0.96), rgba(220, 234, 229, 0.88));
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--pine-soft);
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+        }
+
+        .hero-panel h1 {
+            margin: 0;
+            max-width: 11ch;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(3rem, 6vw, 5.6rem);
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            color: #18352f;
+        }
+
+        .hero-panel h1 span {
+            color: var(--lagoon);
+        }
+
+        .hero-text {
+            max-width: 520px;
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .hero-quote {
+            margin-top: 26px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.74);
+            box-shadow: var(--shadow-soft);
+            color: var(--pine);
+            font-size: 0.92rem;
+        }
+
+        .hero-quote strong {
+            font-weight: 700;
+        }
+
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .stat-chip {
+            min-width: 156px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.74);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .stat-chip span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        .stat-chip strong {
+            display: block;
+            margin-top: 8px;
+            color: var(--pine);
+            font-size: 1.28rem;
+        }
+
+        .scene {
+            position: relative;
+            margin-top: 34px;
+            min-height: 320px;
+            border-radius: 26px;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(255, 250, 243, 0.35), rgba(255, 250, 243, 0)),
+                linear-gradient(180deg, #f5deb2 0%, #dbece8 44%, #b8d4ce 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+        }
+
+        .sun,
+        .cloud,
+        .hill,
+        .hotel,
+        .hotel-wing,
+        .pool,
+        .deck,
+        .palm {
+            position: absolute;
+        }
+
+        .sun {
+            top: 46px;
+            right: 76px;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #fff9df 0%, #ffd88d 68%, #efb75f 100%);
+            box-shadow: 0 0 45px rgba(239, 183, 95, 0.38);
+            animation: drift 8s ease-in-out infinite;
+        }
+
+        .cloud {
+            background: rgba(255, 255, 255, 0.56);
+            border-radius: 999px;
+            filter: blur(1px);
+        }
+
+        .cloud-a {
+            top: 68px;
+            left: 58px;
+            width: 106px;
+            height: 24px;
+        }
+
+        .cloud-b {
+            top: 118px;
+            left: 132px;
+            width: 78px;
+            height: 18px;
+        }
+
+        .hill-back {
+            left: -4%;
+            right: -4%;
+            bottom: 102px;
+            height: 120px;
+            background: #89b2ab;
+            border-radius: 55% 55% 0 0 / 100% 100% 0 0;
+        }
+
+        .hill-front {
+            left: -8%;
+            right: -8%;
+            bottom: 0;
+            height: 152px;
+            background: linear-gradient(180deg, #5e9087, #446d65);
+            border-radius: 52% 52% 0 0 / 100% 100% 0 0;
+        }
+
+        .hotel {
+            left: 28%;
+            bottom: 92px;
+            width: 210px;
+            height: 120px;
+            border-radius: 22px 22px 0 0;
+            background:
+                linear-gradient(90deg, rgba(255, 244, 220, 0.82) 18%, transparent 18% 26%, rgba(255, 244, 220, 0.82) 26% 36%, transparent 36% 44%, rgba(255, 244, 220, 0.82) 44% 54%, transparent 54% 62%, rgba(255, 244, 220, 0.82) 62% 72%, transparent 72% 80%, rgba(255, 244, 220, 0.82) 80%),
+                linear-gradient(180deg, #f7f0df 0%, #ead7ba 100%);
+            box-shadow: 0 16px 20px rgba(35, 66, 61, 0.16);
+        }
+
+        .hotel-wing {
+            left: calc(28% + 150px);
+            bottom: 92px;
+            width: 98px;
+            height: 86px;
+            border-radius: 20px 20px 0 0;
+            background:
+                linear-gradient(90deg, rgba(255, 244, 220, 0.82) 22%, transparent 22% 34%, rgba(255, 244, 220, 0.82) 34% 48%, transparent 48% 60%, rgba(255, 244, 220, 0.82) 60% 74%, transparent 74% 86%, rgba(255, 244, 220, 0.82) 86%),
+                linear-gradient(180deg, #efe4ca 0%, #ddc5a2 100%);
+        }
+
+        .pool {
+            left: 20%;
+            right: 18%;
+            bottom: 34px;
+            height: 54px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(94, 144, 135, 0.22)), #8cd3d9;
+            box-shadow: inset 0 8px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .deck {
+            left: 23%;
+            right: 21%;
+            bottom: 76px;
+            height: 18px;
+            border-radius: 999px;
+            background: rgba(236, 216, 184, 0.9);
+        }
+
+        .palm {
+            bottom: 74px;
+            width: 12px;
+            height: 112px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #6a5a46 0%, #8e795d 100%);
+        }
+
+        .palm::before,
+        .palm::after {
+            content: "";
+            position: absolute;
+            top: -16px;
+            width: 72px;
+            height: 18px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #79aa7c, #4a7352);
+            transform-origin: left center;
+        }
+
+        .palm::before {
+            left: -8px;
+            transform: rotate(-28deg);
+        }
+
+        .palm::after {
+            left: -52px;
+            transform: rotate(28deg);
+        }
+
+        .palm-left {
+            left: 78px;
+        }
+
+        .palm-right {
+            right: 88px;
+            height: 96px;
+        }
+
+        .scene-card {
+            position: absolute;
+            right: 24px;
+            bottom: 22px;
+            max-width: 220px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .scene-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .scene-card strong {
+            display: block;
+            margin-top: 6px;
+            color: var(--pine);
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+
+        .auth-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 34px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 480px;
+            padding: 34px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .section-kicker {
+            margin: 0;
+            color: var(--pine-soft);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+
+        .mode-switch {
+            display: inline-flex;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 6px;
+            border-radius: 999px;
+            background: var(--linen);
+        }
+
+        .mode-button {
+            border: 0;
+            border-radius: 999px;
+            padding: 12px 18px;
+            background: transparent;
+            color: var(--pine-soft);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .mode-button.active {
+            background: var(--white);
+            color: var(--pine);
+            box-shadow: 0 10px 22px rgba(35, 66, 61, 0.09);
+        }
+
+        .mode-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .form-copy {
+            margin: 24px 0 20px;
+        }
+
+        .form-copy h2 {
+            margin: 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 0.96;
+            color: var(--pine);
+        }
+
+        .form-copy p {
+            margin: 10px 0 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .auth-form {
+            display: none;
+            gap: 14px;
+        }
+
+        .auth-form.active {
+            display: grid;
+            animation: rise 0.35s ease;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field label {
+            color: var(--pine);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 15px 16px;
+            border: 1px solid rgba(93, 141, 134, 0.18);
+            border-radius: 16px;
+            background: #fffcf8;
+            color: var(--ink);
+            font: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: rgba(93, 141, 134, 0.72);
+            box-shadow: 0 0 0 4px rgba(140, 181, 174, 0.16);
+            transform: translateY(-1px);
+        }
+
+        .inline-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .inline-meta a {
+            color: var(--lagoon);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .inline-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .checkbox {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--lagoon);
+        }
+
+        .submit-button {
+            margin-top: 8px;
+            border: 0;
+            border-radius: 18px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, var(--pine) 0%, var(--lagoon) 100%);
+            color: var(--white);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 18px 30px rgba(93, 141, 134, 0.28);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 36px rgba(93, 141, 134, 0.32);
+        }
+
+        .form-note {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .form-note strong {
+            color: var(--pine);
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes drift {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @media (max-width: 1120px) {
+            .auth-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-panel {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                padding: 18px;
+            }
+
+            .brand-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 18px;
+            }
+
+            .hero-panel,
+            .auth-panel {
+                padding: 22px;
+            }
+
+            .hero-panel h1 {
+                max-width: none;
+            }
+
+            .field-row {
+                grid-template-columns: 1fr;
+            }
+
+            .inline-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .auth-card {
+                padding: 24px;
+            }
+
+            .scene {
+                min-height: 250px;
+            }
+
+            .hotel {
+                left: 18%;
+                width: 170px;
+            }
+
+            .hotel-wing {
+                left: calc(18% + 122px);
+                width: 78px;
+            }
+
+            .scene-card {
+                position: static;
+                margin: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Olá, mundo!</h1>
-    <p>Projeto simples criado no GitHub.</p>
+    <div class="page-shell">
+        <header class="brand-bar">
+            <a class="brand" href="#">Limobi</a>
+            <div class="brand-note">servicos com ritmo leve, organizado e acolhedor</div>
+        </header>
+
+        <main class="auth-layout">
+            <section class="hero-panel">
+                <div>
+                    <p class="eyebrow">Painel de acesso</p>
+                    <h1>Menos atrito, <span>mais acolhimento</span> em cada operacao.</h1>
+                    <p class="hero-text">
+                        A Limobi centraliza atendimento, disponibilidade e rotina operacional em uma
+                        experiencia suave, clara e preparada para negocios que vivem de receber bem.
+                    </p>
+
+                    <div class="hero-quote">
+                        <strong>Eficiencia tranquila:</strong> acompanhe reservas, servicos e atendimento com leveza.
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-chip">
+                            <span>Atendimento</span>
+                            <strong>Rapido e claro</strong>
+                        </div>
+                        <div class="stat-chip">
+                            <span>Rotina</span>
+                            <strong>Tudo em um painel</strong>
+                        </div>
+                        <div class="stat-chip">
+                            <span>Experiencia</span>
+                            <strong>Visual sereno</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene" aria-hidden="true">
+                    <div class="sun"></div>
+                    <div class="cloud cloud-a"></div>
+                    <div class="cloud cloud-b"></div>
+                    <div class="hill hill-back"></div>
+                    <div class="hill hill-front"></div>
+                    <div class="deck"></div>
+                    <div class="pool"></div>
+                    <div class="hotel"></div>
+                    <div class="hotel-wing"></div>
+                    <div class="palm palm-left"></div>
+                    <div class="palm palm-right"></div>
+                    <div class="scene-card">
+                        <span>Clima visual</span>
+                        <strong>Uma atmosfera de hospedagem calma, acolhedora e eficiente.</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="auth-panel">
+                <div class="auth-card">
+                    <p class="section-kicker">Acesso ao sistema</p>
+
+                    <div class="mode-switch" role="tablist" aria-label="Escolha o tipo de acesso">
+                        <button class="mode-button active" type="button" data-mode="login" aria-selected="true">Entrar</button>
+                        <button class="mode-button" type="button" data-mode="signup" aria-selected="false">Criar conta</button>
+                    </div>
+
+                    <div class="form-copy">
+                        <h2 id="form-title">Entre na sua conta</h2>
+                        <p id="form-description">Acesse seu painel para acompanhar a operacao, atender clientes e manter sua rotina organizada.</p>
+                    </div>
+
+                    <form class="auth-form active" data-form="login">
+                        <div class="field">
+                            <label for="login-email">E-mail</label>
+                            <input id="login-email" type="email" placeholder="voce@limobi.com">
+                        </div>
+
+                        <div class="field">
+                            <label for="login-password">Senha</label>
+                            <input id="login-password" type="password" placeholder="Digite sua senha">
+                        </div>
+
+                        <div class="inline-meta">
+                            <label class="checkbox" for="remember">
+                                <input id="remember" type="checkbox">
+                                <span>Manter conectado</span>
+                            </label>
+                            <a href="#">Esqueci minha senha</a>
+                        </div>
+
+                        <button class="submit-button" type="submit">Entrar no painel</button>
+                    </form>
+
+                    <form class="auth-form" data-form="signup">
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="signup-name">Nome</label>
+                                <input id="signup-name" type="text" placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="field">
+                                <label for="signup-company">Empresa</label>
+                                <input id="signup-company" type="text" placeholder="Nome da operacao">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="signup-email">E-mail profissional</label>
+                            <input id="signup-email" type="email" placeholder="contato@empresa.com">
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="signup-password">Senha</label>
+                                <input id="signup-password" type="password" placeholder="Crie uma senha">
+                            </div>
+
+                            <div class="field">
+                                <label for="signup-confirm">Confirmar senha</label>
+                                <input id="signup-confirm" type="password" placeholder="Repita a senha">
+                            </div>
+                        </div>
+
+                        <label class="checkbox" for="terms">
+                            <input id="terms" type="checkbox">
+                            <span>Aceito os termos e quero criar minha conta na Limobi.</span>
+                        </label>
+
+                        <button class="submit-button" type="submit">Criar conta</button>
+                    </form>
+
+                    <p class="form-note">
+                        <strong>Ambiente demonstrativo.</strong> Interface pensada para uma startup de servicos com
+                        clima leve, confiavel e inspirado em hospitalidade.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const contentByMode = {
+            login: {
+                title: "Entre na sua conta",
+                description: "Acesse seu painel para acompanhar a operacao, atender clientes e manter sua rotina organizada."
+            },
+            signup: {
+                title: "Crie sua conta",
+                description: "Comece com uma entrada simples e leve para estruturar reservas, atendimento e servicos em um so lugar."
+            }
+        };
+
+        const buttons = document.querySelectorAll(".mode-button");
+        const forms = document.querySelectorAll(".auth-form");
+        const title = document.getElementById("form-title");
+        const description = document.getElementById("form-description");
+
+        function setMode(mode) {
+            buttons.forEach((button) => {
+                const active = button.dataset.mode === mode;
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-selected", active ? "true" : "false");
+            });
+
+            forms.forEach((form) => {
+                form.classList.toggle("active", form.dataset.form === mode);
+            });
+
+            title.textContent = contentByMode[mode].title;
+            description.textContent = contentByMode[mode].description;
+        }
+
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => setMode(button.dataset.mode));
+        });
+
+        forms.forEach((form) => {
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>
