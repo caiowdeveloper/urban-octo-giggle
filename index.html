@@ -6,25 +6,23 @@
     <title>Limobi | Acesso</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sand: #f8f0e4;
-            --cream: #fffaf3;
-            --mist: #e1ece8;
-            --lagoon: #5b8d85;
-            --pine: #23423d;
-            --pine-soft: #4a6c65;
-            --ink: #21322f;
-            --muted: #687a75;
-            --border: rgba(91, 141, 133, 0.16);
-            --white: #ffffff;
-            --success-bg: #edf7f1;
-            --success-text: #2a6a49;
+            --bg-1: #f8f1e6;
+            --bg-2: #e5efea;
+            --panel: rgba(255, 255, 255, 0.82);
+            --panel-strong: #ffffff;
+            --border: rgba(92, 131, 123, 0.14);
+            --text: #21312f;
+            --muted: #667873;
+            --accent: #2f5d56;
+            --accent-soft: #5e8f86;
+            --success-bg: #eef7f1;
+            --success-text: #2b6a4a;
             --error-bg: #fff1eb;
-            --error-text: #904434;
-            --shadow: 0 24px 60px rgba(35, 66, 61, 0.14);
-            --shadow-soft: 0 12px 26px rgba(35, 66, 61, 0.09);
+            --error-text: #934535;
+            --shadow: 0 24px 60px rgba(33, 49, 47, 0.12);
         }
 
         * {
@@ -39,147 +37,131 @@
 
         body {
             font-family: "Plus Jakarta Sans", sans-serif;
-            color: var(--ink);
+            color: var(--text);
             background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.84), transparent 28%),
-                linear-gradient(135deg, #f8f0e4 0%, #edf5f2 46%, #dcebe6 100%);
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 24%),
+                linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
         }
 
         .page {
             min-height: 100vh;
-            padding: 28px;
-        }
-
-        .brand {
-            display: inline-flex;
+            padding: 24px;
+            display: flex;
             align-items: center;
-            color: var(--pine);
-            text-decoration: none;
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(2rem, 4vw, 2.9rem);
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            justify-content: center;
         }
 
-        .layout {
+        .shell {
+            width: 100%;
+            max-width: 1120px;
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 26px;
-            margin-top: 20px;
+            grid-template-columns: 0.92fr 1.08fr;
+            gap: 24px;
         }
 
         .intro,
-        .panel {
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.72);
+        .card {
+            background: var(--panel);
             border: 1px solid rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(14px);
+            border-radius: 28px;
             box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
         }
 
         .intro {
-            padding: 36px;
+            padding: 34px;
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.44)),
-                linear-gradient(135deg, rgba(248, 240, 228, 0.94), rgba(225, 236, 232, 0.9));
+                linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.45)),
+                linear-gradient(135deg, rgba(248, 241, 230, 0.94), rgba(229, 239, 234, 0.92));
         }
 
-        .eyebrow {
-            margin: 0 0 14px;
-            color: var(--pine-soft);
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-        }
-
-        .intro h1 {
+        .brand {
             margin: 0;
-            max-width: 11ch;
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(2.5rem, 5vw, 3.6rem);
             line-height: 0.9;
-            color: var(--pine);
+            color: var(--accent);
+        }
+
+        .intro h2 {
+            margin: 22px 0 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(2.4rem, 4vw, 4rem);
+            line-height: 0.94;
+            color: var(--text);
         }
 
         .intro p {
-            margin: 18px 0 0;
-            max-width: 52ch;
+            margin: 16px 0 0;
+            max-width: 34ch;
             color: var(--muted);
             line-height: 1.75;
         }
 
-        .intro-list {
-            display: grid;
-            gap: 14px;
-            margin-top: 26px;
-        }
-
-        .intro-item {
-            padding: 16px 18px;
-            border-radius: 18px;
+        .endpoint-box {
+            margin-top: 28px;
+            padding: 18px 20px;
+            border-radius: 20px;
             background: rgba(255, 255, 255, 0.78);
-            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
         }
 
-        .intro-item strong {
+        .endpoint-box strong {
             display: block;
-            color: var(--pine);
-            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--accent);
         }
 
-        .intro-item span {
+        .endpoint-box code {
             display: block;
-            margin-top: 6px;
             color: var(--muted);
-            font-size: 0.92rem;
-            line-height: 1.65;
+            font-size: 0.88rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
         }
 
-        .panel {
+        .card {
             padding: 30px;
         }
 
-        .panel h2 {
+        .card h1 {
             margin: 0;
             font-family: "Cormorant Garamond", serif;
             font-size: clamp(2.2rem, 4vw, 3rem);
             line-height: 0.96;
-            color: var(--pine);
+            color: var(--accent);
         }
 
-        .panel-copy {
+        .card p {
             margin: 10px 0 0;
             color: var(--muted);
             line-height: 1.7;
         }
 
-        .mode-switch {
+        .tabs {
             display: inline-flex;
             gap: 8px;
             margin-top: 22px;
             padding: 6px;
             border-radius: 999px;
-            background: rgba(241, 230, 213, 0.9);
+            background: rgba(241, 232, 220, 0.95);
         }
 
-        .mode-button {
+        .tab {
             border: 0;
             border-radius: 999px;
             padding: 12px 16px;
             background: transparent;
-            color: var(--pine-soft);
+            color: var(--muted);
             font: inherit;
-            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        .mode-button.active {
-            background: var(--white);
-            color: var(--pine);
-            box-shadow: var(--shadow-soft);
+        .tab.active {
+            background: var(--panel-strong);
+            color: var(--accent);
+            box-shadow: 0 10px 24px rgba(33, 49, 47, 0.08);
         }
 
         .feedback {
@@ -187,7 +169,7 @@
             margin-top: 22px;
             padding: 16px 18px;
             border-radius: 18px;
-            line-height: 1.65;
+            line-height: 1.6;
         }
 
         .feedback.visible {
@@ -204,19 +186,18 @@
             color: var(--error-text);
         }
 
-        .feedback ul {
-            margin: 10px 0 0;
-            padding-left: 18px;
-        }
-
-        .form {
+        .panel {
             display: none;
-            gap: 16px;
-            margin-top: 24px;
+            margin-top: 22px;
         }
 
-        .form.active {
+        .panel.active {
+            display: block;
+        }
+
+        form {
             display: grid;
+            gap: 16px;
         }
 
         .field-row {
@@ -231,456 +212,266 @@
         }
 
         label {
-            color: var(--pine);
+            color: var(--text);
             font-size: 0.92rem;
             font-weight: 600;
         }
 
-        input,
-        textarea {
+        input {
             width: 100%;
             padding: 15px 16px;
             border: 1px solid var(--border);
             border-radius: 16px;
-            background: #fffcf8;
-            color: var(--ink);
+            background: #fffdf9;
+            color: var(--text);
             font: inherit;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
-
-        input:focus,
-        textarea:focus {
+        input:focus {
             outline: none;
-            border-color: rgba(91, 141, 133, 0.72);
-            box-shadow: 0 0 0 4px rgba(91, 141, 133, 0.14);
+            border-color: rgba(47, 93, 86, 0.5);
+            box-shadow: 0 0 0 4px rgba(94, 143, 134, 0.12);
         }
 
-        .inline-actions {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: -4px;
-            color: var(--muted);
-            font-size: 0.92rem;
-        }
-
-        .inline-actions a,
-        .api-note a {
-            color: var(--lagoon);
+        .helper-link {
+            color: var(--accent-soft);
             text-decoration: none;
             font-weight: 600;
+            width: fit-content;
         }
 
-        .inline-actions a:hover,
-        .api-note a:hover {
+        .helper-link:hover {
             text-decoration: underline;
         }
 
-        .submit-button {
+        .submit {
             border: 0;
             border-radius: 18px;
             padding: 16px 20px;
-            background: linear-gradient(135deg, var(--pine) 0%, var(--lagoon) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+            color: #fff;
             font: inherit;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 18px 28px rgba(91, 141, 133, 0.26);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            box-shadow: 0 18px 30px rgba(47, 93, 86, 0.24);
         }
 
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 36px rgba(91, 141, 133, 0.3);
+        .submit:hover {
+            transform: translateY(-1px);
         }
 
-        .submit-button:disabled {
-            opacity: 0.72;
-            cursor: wait;
-            transform: none;
-        }
-
-        .helper {
-            color: var(--muted);
-            font-size: 0.84rem;
-            line-height: 1.6;
-        }
-
-        .api-note {
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(91, 141, 133, 0.12);
-            color: var(--muted);
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 1080px) {
-            .layout {
+        @media (max-width: 980px) {
+            .shell {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 760px) {
+        @media (max-width: 720px) {
             .page {
-                padding: 18px;
+                padding: 16px;
             }
 
             .intro,
-            .panel {
+            .card {
                 padding: 22px;
+            }
+
+            .tabs {
+                display: grid;
+                width: 100%;
+                border-radius: 20px;
             }
 
             .field-row {
                 grid-template-columns: 1fr;
-            }
-
-            .mode-switch {
-                display: grid;
-                width: 100%;
-                border-radius: 22px;
-            }
-
-            .inline-actions {
-                flex-direction: column;
-                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <a class="brand" href="#">Limobi</a>
-
-        <main class="layout">
+        <div class="shell">
             <section class="intro">
-                <p class="eyebrow">Acesso simples para a operacao</p>
-                <h1>Entrar, criar usuario e recuperar acesso sem atrito.</h1>
+                <h1 class="brand">Limobi</h1>
+                <h2>Entrar, criar conta e recuperar acesso.</h2>
                 <p>
-                    Esta tela foi preparada para receber uma API no futuro. O fluxo ja esta
-                    organizado para login, cadastro de usuario e recuperacao inicial de senha em uma
-                    interface mais enxuta e calma.
+                    Tela HTML organizada para os tres fluxos principais da autenticacao, sem backend acoplado e
+                    pronta para ligar endpoints depois.
                 </p>
 
-                <div class="intro-list">
-                    <div class="intro-item">
-                        <strong>Login direto</strong>
-                        <span>Valida usuario ou e-mail e prepara o acesso ao sistema em um unico passo.</span>
-                    </div>
-                    <div class="intro-item">
-                        <strong>Cadastro completo</strong>
-                        <span>Cria usuarios na tabela `usuarios` sem misturar a interface com a regra do banco.</span>
-                    </div>
-                    <div class="intro-item">
-                        <strong>API preparada</strong>
-                        <span>Chamadas em JSON, respostas padronizadas e base pronta para crescer como servico.</span>
-                    </div>
+                <div class="endpoint-box">
+                    <strong>Endpoints futuros</strong>
+                    <code>window.LIMOBI_API_ENDPOINTS = {
+  login: "https://seu-servidor.com/login",
+  register: "https://seu-servidor.com/register",
+  forgot: "https://seu-servidor.com/forgot-password"
+}</code>
                 </div>
             </section>
 
-            <section class="panel">
-                <h2 id="panel-title">Acessar o sistema</h2>
-                <p class="panel-copy" id="panel-copy">
-                    Entre com seu usuario ou e-mail em uma tela pronta para integrar com a autenticacao da Limobi.
-                </p>
+            <section class="card">
+                <h1 id="title">Acessar o sistema</h1>
+                <p id="description">Entre com seu usuario ou e-mail.</p>
 
-                <div class="mode-switch" role="tablist" aria-label="Escolha o fluxo">
-                    <button class="mode-button active" type="button" data-mode="login" aria-selected="true">Entrar</button>
-                    <button class="mode-button" type="button" data-mode="register" aria-selected="false">Criar usuario</button>
-                    <button class="mode-button" type="button" data-mode="forgot" aria-selected="false">Esqueci a senha</button>
+                <div class="tabs" role="tablist" aria-label="Fluxos da autenticacao">
+                    <button class="tab active" type="button" data-mode="login" aria-selected="true">Acessar o sistema</button>
+                    <button class="tab" type="button" data-mode="register" aria-selected="false">Criar usuario</button>
+                    <button class="tab" type="button" data-mode="forgot" aria-selected="false">Esqueci a senha</button>
                 </div>
 
                 <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
 
-                <form class="form active" data-form="login">
-                    <div class="field">
-                        <label for="login">Usuario ou e-mail</label>
-                        <input id="login" name="login" type="text" placeholder="usuario ou email@dominio.com" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="login-senha">Senha</label>
-                        <input id="login-senha" name="senha" type="password" placeholder="Digite sua senha" required>
-                    </div>
-
-                    <div class="inline-actions">
-                        <span>Fluxo pronto para integracao futura.</span>
-                        <a href="#" data-go-mode="forgot">Esqueci a senha</a>
-                    </div>
-
-                    <button class="submit-button" type="submit">Entrar</button>
-                </form>
-
-                <form class="form" data-form="register">
-                    <div class="field-row">
+                <section class="panel active" data-panel="login">
+                    <form data-form="login">
                         <div class="field">
-                            <label for="idEmpresa">ID da empresa</label>
-                            <input id="idEmpresa" name="idEmpresa" type="number" min="1" placeholder="1" required>
+                            <label for="login-identificador">Usuario ou e-mail</label>
+                            <input id="login-identificador" name="login" type="text" placeholder="usuario ou email@dominio.com" required>
                         </div>
 
                         <div class="field">
-                            <label for="permissao">Permissao</label>
-                            <input id="permissao" name="permissao" type="number" min="0" placeholder="1" required>
+                            <label for="login-senha">Senha</label>
+                            <input id="login-senha" name="senha" type="password" placeholder="Digite sua senha" required>
                         </div>
-                    </div>
 
-                    <div class="field-row">
+                        <a class="helper-link" href="#" data-switch="forgot">Esqueci a senha</a>
+
+                        <button class="submit" type="submit">Entrar</button>
+                    </form>
+                </section>
+
+                <section class="panel" data-panel="register">
+                    <form data-form="register">
                         <div class="field">
-                            <label for="nomePessoa">Nome da pessoa</label>
-                            <input id="nomePessoa" name="nomePessoa" type="text" maxlength="40" placeholder="Nome completo" required>
+                            <label for="cadastro-nome">Nome completo</label>
+                            <input id="cadastro-nome" name="nome" type="text" placeholder="Nome completo" required>
                         </div>
 
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="cadastro-email">E-mail</label>
+                                <input id="cadastro-email" name="email" type="email" placeholder="email@dominio.com" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="cadastro-telefone">Telefone</label>
+                                <input id="cadastro-telefone" name="telefone" type="text" placeholder="(00) 00000-0000" required>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="cadastro-senha">Senha</label>
+                                <input id="cadastro-senha" name="senha" type="password" placeholder="Minimo 8 caracteres" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="cadastro-confirmar">Confirmar senha</label>
+                                <input id="cadastro-confirmar" name="confirmarSenha" type="password" placeholder="Repita a senha" required>
+                            </div>
+                        </div>
+
+                        <button class="submit" type="submit">Criar usuario</button>
+                    </form>
+                </section>
+
+                <section class="panel" data-panel="forgot">
+                    <form data-form="forgot">
                         <div class="field">
-                            <label for="nomeUsuario">Nome de usuario</label>
-                            <input id="nomeUsuario" name="nomeUsuario" type="text" maxlength="40" placeholder="usuario.limobi" required>
-                        </div>
-                    </div>
-
-                    <div class="field-row">
-                        <div class="field">
-                            <label for="email">E-mail</label>
-                            <input id="email" name="email" type="email" maxlength="40" placeholder="contato@empresa.com" required>
+                            <label for="forgot-identificador">Usuario ou e-mail</label>
+                            <input id="forgot-identificador" name="login" type="text" placeholder="usuario ou email@dominio.com" required>
                         </div>
 
-                        <div class="field">
-                            <label for="telefone">Telefone</label>
-                            <input id="telefone" name="telefone" type="text" maxlength="20" placeholder="(64) 99999-9999" required>
-                        </div>
-                    </div>
-
-                    <div class="field-row">
-                        <div class="field">
-                            <label for="cargo">Cargo</label>
-                            <input id="cargo" name="cargo" type="text" maxlength="20" placeholder="Atendimento" required>
-                        </div>
-
-                        <div class="field">
-                            <label for="senha">Senha</label>
-                            <input id="senha" name="senha" type="password" minlength="8" maxlength="72" placeholder="Minimo 8 caracteres" required>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label for="confirmarSenha">Confirmar senha</label>
-                        <input id="confirmarSenha" name="confirmarSenha" type="password" minlength="8" maxlength="72" placeholder="Repita a senha" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="funcao">Funcao</label>
-                        <textarea id="funcao" name="funcao" maxlength="300" placeholder="Descreva a funcao operacional desse usuario" required></textarea>
-                    </div>
-
-                    <div class="helper">
-                        O cadastro ja esta estruturado para integrar com um endpoint de criacao de usuario.
-                    </div>
-
-                    <button class="submit-button" type="submit">Criar usuario</button>
-                </form>
-
-                <form class="form" data-form="forgot">
-                    <div class="field">
-                        <label for="forgot-login">Usuario ou e-mail</label>
-                        <input id="forgot-login" name="login" type="text" placeholder="usuario ou email@dominio.com" required>
-                    </div>
-
-                    <div class="helper">
-                        O fluxo de recuperacao ja esta desenhado para receber um endpoint dedicado no futuro.
-                    </div>
-
-                    <button class="submit-button" type="submit">Solicitar recuperacao</button>
-                </form>
-
-                <div class="api-note">
-                    Quando a API existir, basta definir <code>window.LIMOBI_API_ENDPOINTS</code> com as URLs de
-                    <code>login</code>, <code>register</code> e <code>forgot</code> sem mudar a interface.
-                </div>
+                        <button class="submit" type="submit">Solicitar recuperacao</button>
+                    </form>
+                </section>
             </section>
-        </main>
+        </div>
     </div>
 
     <script>
-        const panelMeta = {
+        const textByMode = {
             login: {
                 title: "Acessar o sistema",
-                copy: "Entre com seu usuario ou e-mail em uma tela pronta para integrar com a autenticacao da Limobi."
+                description: "Entre com seu usuario ou e-mail."
             },
             register: {
                 title: "Criar usuario",
-                copy: "Cadastre um novo usuario com todos os campos exigidos pela tabela `usuarios`."
+                description: "Cadastre um novo usuario com os dados principais."
             },
             forgot: {
-                title: "Recuperar acesso",
-                copy: "Envie o identificador do usuario em uma tela pronta para o fluxo futuro de recuperacao."
+                title: "Esqueci a senha",
+                description: "Recupere o acesso informando usuario ou e-mail."
             }
         };
 
-        const futureMessageByMode = {
-            login: "Tela de login pronta. Conecte o endpoint de autenticacao quando a API estiver disponivel.",
-            register: "Tela de criacao de usuario pronta. Conecte o endpoint de cadastro quando a API estiver disponivel.",
-            forgot: "Tela de recuperacao pronta. Conecte o endpoint de recuperacao quando a API estiver disponivel."
-        };
-
-        const configuredEndpoints = window.LIMOBI_API_ENDPOINTS || null;
-        const buttons = document.querySelectorAll(".mode-button");
-        const modeLinks = document.querySelectorAll("[data-go-mode]");
-        const forms = document.querySelectorAll(".form");
+        const futureEndpoints = window.LIMOBI_API_ENDPOINTS || null;
+        const tabs = document.querySelectorAll(".tab");
+        const panels = document.querySelectorAll(".panel");
+        const switchLinks = document.querySelectorAll("[data-switch]");
+        const forms = document.querySelectorAll("form[data-form]");
+        const title = document.getElementById("title");
+        const description = document.getElementById("description");
         const feedback = document.getElementById("feedback");
-        const panelTitle = document.getElementById("panel-title");
-        const panelCopy = document.getElementById("panel-copy");
 
-        function renderFeedback(type, message, errors = []) {
+        function showFeedback(type, message) {
             feedback.className = "feedback visible " + type;
-
-            let html = "<strong>" + message + "</strong>";
-            if (errors.length) {
-                html += "<ul>" + errors.map((error) => "<li>" + error + "</li>").join("") + "</ul>";
-            }
-
-            feedback.innerHTML = html;
+            feedback.textContent = message;
         }
 
         function clearFeedback() {
             feedback.className = "feedback";
-            feedback.innerHTML = "";
+            feedback.textContent = "";
         }
 
         function setMode(mode) {
-            buttons.forEach((button) => {
-                const active = button.dataset.mode === mode;
-                button.classList.toggle("active", active);
-                button.setAttribute("aria-selected", active ? "true" : "false");
+            tabs.forEach((tab) => {
+                const active = tab.dataset.mode === mode;
+                tab.classList.toggle("active", active);
+                tab.setAttribute("aria-selected", active ? "true" : "false");
             });
 
-            forms.forEach((form) => {
-                form.classList.toggle("active", form.dataset.form === mode);
+            panels.forEach((panel) => {
+                panel.classList.toggle("active", panel.dataset.panel === mode);
             });
 
-            panelTitle.textContent = panelMeta[mode].title;
-            panelCopy.textContent = panelMeta[mode].copy;
+            title.textContent = textByMode[mode].title;
+            description.textContent = textByMode[mode].description;
             clearFeedback();
         }
 
-        async function submitToFutureApi(mode, payload) {
-            if (!configuredEndpoints || !configuredEndpoints[mode]) {
-                return {
-                    success: true,
-                    message: futureMessageByMode[mode]
-                };
-            }
-
-            const response = await fetch(configuredEndpoints[mode], {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                credentials: "include",
-                body: JSON.stringify(payload)
-            });
-
-            let data = {};
-            try {
-                data = await response.json();
-            } catch (error) {
-                throw new Error("A resposta da API nao retornou JSON valido.");
-            }
-
-            if (!response.ok || data.success === false) {
-                const message = data.message || "Nao foi possivel concluir a solicitacao.";
-                const errors = Array.isArray(data.errors) ? data.errors : [];
-                const apiError = new Error(message);
-                apiError.details = errors;
-                throw apiError;
-            }
-
-            return data;
-        }
-
-        function setSubmitting(form, submitting) {
-            const button = form.querySelector(".submit-button");
-            if (button) {
-                button.disabled = submitting;
-            }
-        }
-
-        function formDataToObject(form) {
-            return Object.fromEntries(new FormData(form).entries());
-        }
-
-        async function handleLogin(form) {
-            const payload = formDataToObject(form);
-            const data = await submitToFutureApi("login", payload);
-
-            renderFeedback("success", data.message || "Login realizado com sucesso.");
-
-            if (data.redirectUrl) {
-                setTimeout(() => {
-                    window.location.href = data.redirectUrl;
-                }, 700);
-            }
-        }
-
-        async function handleRegister(form) {
-            const payload = formDataToObject(form);
-            const senha = payload.senha || "";
-            const confirmarSenha = payload.confirmarSenha || "";
-
-            if (senha !== confirmarSenha) {
-                renderFeedback("error", "As senhas nao conferem.");
-                return;
-            }
-
-            delete payload.confirmarSenha;
-
-            const data = await submitToFutureApi("register", payload);
-            renderFeedback("success", data.message || "Usuario criado com sucesso.");
-
-            form.reset();
-            document.getElementById("login").value = payload.nomeUsuario || payload.email || "";
-            setMode("login");
-        }
-
-        async function handleForgot(form) {
-            const payload = formDataToObject(form);
-            const data = await submitToFutureApi("forgot", payload);
-            renderFeedback("success", data.message || "Solicitacao recebida.");
-        }
-
-        buttons.forEach((button) => {
-            button.addEventListener("click", () => setMode(button.dataset.mode));
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => setMode(tab.dataset.mode));
         });
 
-        modeLinks.forEach((link) => {
+        switchLinks.forEach((link) => {
             link.addEventListener("click", (event) => {
                 event.preventDefault();
-                setMode(link.dataset.goMode);
+                setMode(link.dataset.switch);
             });
         });
 
         forms.forEach((form) => {
-            form.addEventListener("submit", async (event) => {
+            form.addEventListener("submit", (event) => {
                 event.preventDefault();
-                clearFeedback();
-                setSubmitting(form, true);
 
-                try {
-                    if (form.dataset.form === "login") {
-                        await handleLogin(form);
-                    } else if (form.dataset.form === "register") {
-                        await handleRegister(form);
-                    } else if (form.dataset.form === "forgot") {
-                        await handleForgot(form);
+                const mode = form.dataset.form;
+
+                if (mode === "register") {
+                    const senha = form.querySelector('[name="senha"]').value;
+                    const confirmar = form.querySelector('[name="confirmarSenha"]').value;
+
+                    if (senha !== confirmar) {
+                        showFeedback("error", "As senhas nao conferem.");
+                        return;
                     }
-                } catch (error) {
-                    renderFeedback("error", error.message || "Falha ao comunicar com a integracao futura.", error.details || []);
-                } finally {
-                    setSubmitting(form, false);
                 }
+
+                if (futureEndpoints && futureEndpoints[mode]) {
+                    showFeedback("success", "Endpoint configurado: " + futureEndpoints[mode]);
+                    return;
+                }
+
+                showFeedback("success", "Tela pronta. Conecte o endpoint de " + mode + " quando a API estiver disponivel.");
             });
         });
     </script>
